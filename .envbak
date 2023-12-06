@@ -1,9 +1,0 @@
-# Environment variables declared in this file are automatically made available to Prisma.
-# See the documentation for more detail: https://pris.ly/d/prisma-schema#accessing-environment-variables-from-the-schema
-
-# Prisma supports the native connection string format for PostgreSQL, MySQL, SQLite, SQL Server, MongoDB and CockroachDB.
-# See the documentation for all the connection string options: https://pris.ly/d/connection-strings
-
-DATABASE_URL="mongodb+srv://marcio:Platao7777@cluster0.lg36a.mongodb.net/quattor?retryWrites=true&w=majority"
-NEXT_PUBLIC_EVO_AUTH=QUATTOR:97FDD663-6723-4812-890F-FB109DC90F5D
-SESSION_SECRET="marcio@aynrarandarevoltadeAtlas"
