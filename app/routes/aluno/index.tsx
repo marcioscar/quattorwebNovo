@@ -129,7 +129,59 @@ export default function Treino() {
       return { treino: o.nome, carga: o.carga, grupo: o.grupo };
     })
   );
-  console.log(HistoricoExercicios);
+
+  const TRICEPS = _.takeRight(
+    HistoricoExercicios.filter((o) => o.grupo?.includes("TRICEPS"))
+  );
+  const ABDOME = _.takeRight(
+    HistoricoExercicios.filter((o) => o.grupo?.includes("ABDOME"))
+  );
+
+  const BICEPS = _.takeRight(
+    HistoricoExercicios.filter((o) => o.grupo?.includes("BICEPS"))
+  );
+  const COSTAS = _.takeRight(
+    HistoricoExercicios.filter((o) => o.grupo?.includes("COSTAS"))
+  );
+  const GLUTEOS = _.takeRight(
+    HistoricoExercicios.filter((o) => o.grupo?.includes("GLUTEOS"))
+  );
+  const MEMBROS_INFERIORES_GERAL = _.takeRight(
+    HistoricoExercicios.filter((o) =>
+      o.grupo?.includes("MEMBROS INFERIORES GERAL")
+    )
+  );
+
+  const MEMBROS_SUPERIORES_GERAL = _.takeRight(
+    HistoricoExercicios.filter((o) =>
+      o.grupo?.includes("MEMBROS SUPERIORES GERAL")
+    )
+  );
+
+  const MEMBROS_SUPERIORES_1 = _.takeRight(
+    HistoricoExercicios.filter((o) => o.grupo?.includes("MEMBROS SUPERIORES 1"))
+  );
+
+  const MEMBROS_SUPERIORES_2 = _.takeRight(
+    HistoricoExercicios.filter((o) => o.grupo?.includes("MEMBROS SUPERIORES 2"))
+  );
+  const OMBROS = _.takeRight(
+    HistoricoExercicios.filter((o) => o.grupo?.includes("OMBROS"))
+  );
+
+  const PANTURRILHA = _.takeRight(
+    HistoricoExercicios.filter((o) => o.grupo?.includes("PANTURRILHA"))
+  );
+  const PEITORAL = _.takeRight(
+    HistoricoExercicios.filter((o) => o.grupo?.includes("PEITORAL"))
+  );
+  const POSTERIORES_DE_COXAS = _.takeRight(
+    HistoricoExercicios.filter((o) => o.grupo?.includes("POSTERIORES DE COXAS"))
+  );
+
+  const QUADS = _.takeRight(
+    HistoricoExercicios.filter((o) => o.grupo?.includes("QUADS"))
+  );
 
   const grupotreinoPlan = _.map(
     _.groupBy(PlaneTreino, "data"),
@@ -438,19 +490,17 @@ export default function Treino() {
             Treinos Feitos
           </h2>
           <div className="text-stone-600 text-center place-content-center gap-2  mx-auto grid grid-cols-2 md:gap-2 md:grid-cols-4 lg:grid-cols-7 lg:container-2xl">
-            <Card className="">
-              <CardHeader>
-                <Accordion type="single" collapsible className="w-full">
-                  <AccordionItem value="item-1">
-                    <AccordionTrigger>
-                      <CardTitle>Abdome</CardTitle>
-                    </AccordionTrigger>
-                    <AccordionContent>
-                      <CardDescription>
-                        {_.takeRight(
-                          HistoricoExercicios.filter((o) =>
-                            o.grupo?.includes("ABDOME")
-                          ).map((s, index) => (
+            {ABDOME.length > 0 && (
+              <Card className="">
+                <CardHeader>
+                  <Accordion type="single" collapsible className="w-full">
+                    <AccordionItem value="item-1">
+                      <AccordionTrigger>
+                        <CardTitle>Abdome</CardTitle>
+                      </AccordionTrigger>
+                      <AccordionContent>
+                        <CardDescription>
+                          {ABDOME.map((s, index) => (
                             <div key={index}>
                               <Accordion
                                 type="single"
@@ -467,67 +517,26 @@ export default function Treino() {
                                 </AccordionItem>
                               </Accordion>
                             </div>
-                          )),
-                          7
-                        )}
-                      </CardDescription>
-                    </AccordionContent>
-                  </AccordionItem>
-                </Accordion>
-              </CardHeader>
-            </Card>
-            <Card className="">
-              <CardHeader>
-                <Accordion type="single" collapsible className="w-full">
-                  <AccordionItem value="item-1">
-                    <AccordionTrigger>
-                      <CardTitle>Biceps</CardTitle>
-                    </AccordionTrigger>
-                    <AccordionContent>
-                      <CardDescription>
-                        {_.takeRight(
-                          HistoricoExercicios.filter((o) =>
-                            o.grupo?.includes("BICEPS")
-                          ).map((s, index) => (
-                            <div key={index}>
-                              <Accordion
-                                type="single"
-                                collapsible
-                                className="w-full">
-                                <AccordionItem value="item-1">
-                                  <AccordionTrigger>
-                                    {s.treino}
-                                  </AccordionTrigger>
-                                  <AccordionContent>
-                                    {" "}
-                                    {s.carga}
-                                  </AccordionContent>
-                                </AccordionItem>
-                              </Accordion>
-                            </div>
-                          )),
-                          7
-                        )}
-                      </CardDescription>
-                    </AccordionContent>
-                  </AccordionItem>
-                </Accordion>
-              </CardHeader>
-            </Card>
+                          ))}
+                        </CardDescription>
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                </CardHeader>
+              </Card>
+            )}
 
-            <Card className="">
-              <CardHeader>
-                <Accordion type="single" collapsible className="w-full">
-                  <AccordionItem value="item-1">
-                    <AccordionTrigger>
-                      <CardTitle>Costas</CardTitle>
-                    </AccordionTrigger>
-                    <AccordionContent>
-                      <CardDescription>
-                        {_.takeRight(
-                          HistoricoExercicios.filter((o) =>
-                            o.grupo?.includes("COSTAS")
-                          ).map((s, index) => (
+            {BICEPS.length > 0 && (
+              <Card className="">
+                <CardHeader>
+                  <Accordion type="single" collapsible className="w-full">
+                    <AccordionItem value="item-1">
+                      <AccordionTrigger>
+                        <CardTitle>Biceps</CardTitle>
+                      </AccordionTrigger>
+                      <AccordionContent>
+                        <CardDescription>
+                          {BICEPS.map((s, index) => (
                             <div key={index}>
                               <Accordion
                                 type="single"
@@ -544,29 +553,26 @@ export default function Treino() {
                                 </AccordionItem>
                               </Accordion>
                             </div>
-                          )),
-                          7
-                        )}
-                      </CardDescription>
-                    </AccordionContent>
-                  </AccordionItem>
-                </Accordion>
-              </CardHeader>
-            </Card>
+                          ))}
+                        </CardDescription>
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                </CardHeader>
+              </Card>
+            )}
 
-            <Card className="">
-              <CardHeader>
-                <Accordion type="single" collapsible className="w-full">
-                  <AccordionItem value="item-1">
-                    <AccordionTrigger>
-                      <CardTitle>Glúteos</CardTitle>
-                    </AccordionTrigger>
-                    <AccordionContent>
-                      <CardDescription>
-                        {_.takeRight(
-                          HistoricoExercicios.filter((o) =>
-                            o.grupo?.includes("GLUTEOS")
-                          ).map((s, index) => (
+            {COSTAS.length > 0 && (
+              <Card className="">
+                <CardHeader>
+                  <Accordion type="single" collapsible className="w-full">
+                    <AccordionItem value="item-1">
+                      <AccordionTrigger>
+                        <CardTitle>Costas</CardTitle>
+                      </AccordionTrigger>
+                      <AccordionContent>
+                        <CardDescription>
+                          {COSTAS.map((s, index) => (
                             <div key={index}>
                               <Accordion
                                 type="single"
@@ -583,29 +589,26 @@ export default function Treino() {
                                 </AccordionItem>
                               </Accordion>
                             </div>
-                          )),
-                          7
-                        )}
-                      </CardDescription>
-                    </AccordionContent>
-                  </AccordionItem>
-                </Accordion>
-              </CardHeader>
-            </Card>
+                          ))}
+                        </CardDescription>
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                </CardHeader>
+              </Card>
+            )}
 
-            <Card className="">
-              <CardHeader>
-                <Accordion type="single" collapsible className="w-full">
-                  <AccordionItem value="item-1">
-                    <AccordionTrigger>
-                      <CardTitle>Inferior Geral</CardTitle>
-                    </AccordionTrigger>
-                    <AccordionContent>
-                      <CardDescription>
-                        {_.takeRight(
-                          HistoricoExercicios.filter((o) =>
-                            o.grupo?.includes("MEMBROS INFERIORES GERAL")
-                          ).map((s, index) => (
+            {GLUTEOS.length > 0 && (
+              <Card className="">
+                <CardHeader>
+                  <Accordion type="single" collapsible className="w-full">
+                    <AccordionItem value="item-1">
+                      <AccordionTrigger>
+                        <CardTitle>Glúteos</CardTitle>
+                      </AccordionTrigger>
+                      <AccordionContent>
+                        <CardDescription>
+                          {GLUTEOS.map((s, index) => (
                             <div key={index}>
                               <Accordion
                                 type="single"
@@ -622,29 +625,26 @@ export default function Treino() {
                                 </AccordionItem>
                               </Accordion>
                             </div>
-                          )),
-                          7
-                        )}
-                      </CardDescription>
-                    </AccordionContent>
-                  </AccordionItem>
-                </Accordion>
-              </CardHeader>
-            </Card>
+                          ))}
+                        </CardDescription>
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                </CardHeader>
+              </Card>
+            )}
 
-            <Card className="">
-              <CardHeader>
-                <Accordion type="single" collapsible className="w-full">
-                  <AccordionItem value="item-1">
-                    <AccordionTrigger>
-                      <CardTitle>Superior Geral</CardTitle>
-                    </AccordionTrigger>
-                    <AccordionContent>
-                      <CardDescription>
-                        {_.takeRight(
-                          HistoricoExercicios.filter((o) =>
-                            o.grupo?.includes("MEMBROS SUPERIORES GERAL")
-                          ).map((s, index) => (
+            {MEMBROS_INFERIORES_GERAL.length > 0 && (
+              <Card className="">
+                <CardHeader>
+                  <Accordion type="single" collapsible className="w-full">
+                    <AccordionItem value="item-1">
+                      <AccordionTrigger>
+                        <CardTitle>Inferior Geral</CardTitle>
+                      </AccordionTrigger>
+                      <AccordionContent>
+                        <CardDescription>
+                          {MEMBROS_INFERIORES_GERAL.map((s, index) => (
                             <div key={index}>
                               <Accordion
                                 type="single"
@@ -661,29 +661,131 @@ export default function Treino() {
                                 </AccordionItem>
                               </Accordion>
                             </div>
-                          )),
-                          7
-                        )}
-                      </CardDescription>
-                    </AccordionContent>
-                  </AccordionItem>
-                </Accordion>
-              </CardHeader>
-            </Card>
+                          ))}
+                        </CardDescription>
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                </CardHeader>
+              </Card>
+            )}
+            {MEMBROS_SUPERIORES_GERAL.length > 0 && (
+              <Card className="">
+                <CardHeader>
+                  <Accordion type="single" collapsible className="w-full">
+                    <AccordionItem value="item-1">
+                      <AccordionTrigger>
+                        <CardTitle>Superior Geral</CardTitle>
+                      </AccordionTrigger>
+                      <AccordionContent>
+                        <CardDescription>
+                          {MEMBROS_SUPERIORES_GERAL.map((s, index) => (
+                            <div key={index}>
+                              <Accordion
+                                type="single"
+                                collapsible
+                                className="w-full">
+                                <AccordionItem value="item-1">
+                                  <AccordionTrigger>
+                                    {s.treino}
+                                  </AccordionTrigger>
+                                  <AccordionContent>
+                                    {" "}
+                                    {s.carga}
+                                  </AccordionContent>
+                                </AccordionItem>
+                              </Accordion>
+                            </div>
+                          ))}
+                        </CardDescription>
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                </CardHeader>
+              </Card>
+            )}
+            {MEMBROS_SUPERIORES_1.length > 0 && (
+              <Card className="">
+                <CardHeader>
+                  <Accordion type="single" collapsible className="w-full">
+                    <AccordionItem value="item-1">
+                      <AccordionTrigger>
+                        <CardTitle>Superior 1</CardTitle>
+                      </AccordionTrigger>
+                      <AccordionContent>
+                        <CardDescription>
+                          {MEMBROS_SUPERIORES_1.map((s, index) => (
+                            <div key={index}>
+                              <Accordion
+                                type="single"
+                                collapsible
+                                className="w-full">
+                                <AccordionItem value="item-1">
+                                  <AccordionTrigger>
+                                    {s.treino}
+                                  </AccordionTrigger>
+                                  <AccordionContent>
+                                    {" "}
+                                    {s.carga}
+                                  </AccordionContent>
+                                </AccordionItem>
+                              </Accordion>
+                            </div>
+                          ))}
+                        </CardDescription>
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                </CardHeader>
+              </Card>
+            )}
+            {MEMBROS_SUPERIORES_2.length > 0 && (
+              <Card className="">
+                <CardHeader>
+                  <Accordion type="single" collapsible className="w-full">
+                    <AccordionItem value="item-1">
+                      <AccordionTrigger>
+                        <CardTitle>Superior 2</CardTitle>
+                      </AccordionTrigger>
+                      <AccordionContent>
+                        <CardDescription>
+                          {MEMBROS_SUPERIORES_2.map((s, index) => (
+                            <div key={index}>
+                              <Accordion
+                                type="single"
+                                collapsible
+                                className="w-full">
+                                <AccordionItem value="item-1">
+                                  <AccordionTrigger>
+                                    {s.treino}
+                                  </AccordionTrigger>
+                                  <AccordionContent>
+                                    {" "}
+                                    {s.carga}
+                                  </AccordionContent>
+                                </AccordionItem>
+                              </Accordion>
+                            </div>
+                          ))}
+                        </CardDescription>
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                </CardHeader>
+              </Card>
+            )}
 
-            <Card className="">
-              <CardHeader>
-                <Accordion type="single" collapsible className="w-full">
-                  <AccordionItem value="item-1">
-                    <AccordionTrigger>
-                      <CardTitle>Superior 1</CardTitle>
-                    </AccordionTrigger>
-                    <AccordionContent>
-                      <CardDescription>
-                        {_.takeRight(
-                          HistoricoExercicios.filter((o) =>
-                            o.grupo?.includes("MEMBROS SUPERIORES 1")
-                          ).map((s, index) => (
+            {OMBROS.length > 0 && (
+              <Card className="">
+                <CardHeader>
+                  <Accordion type="single" collapsible className="w-full">
+                    <AccordionItem value="item-1">
+                      <AccordionTrigger>
+                        <CardTitle>Ombros</CardTitle>
+                      </AccordionTrigger>
+                      <AccordionContent>
+                        <CardDescription>
+                          {OMBROS.map((s, index) => (
                             <div key={index}>
                               <Accordion
                                 type="single"
@@ -700,29 +802,61 @@ export default function Treino() {
                                 </AccordionItem>
                               </Accordion>
                             </div>
-                          )),
-                          7
-                        )}
-                      </CardDescription>
-                    </AccordionContent>
-                  </AccordionItem>
-                </Accordion>
-              </CardHeader>
-            </Card>
+                          ))}
+                        </CardDescription>
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                </CardHeader>
+              </Card>
+            )}
+            {PANTURRILHA.length > 0 && (
+              <Card className="">
+                <CardHeader>
+                  <Accordion type="single" collapsible className="w-full">
+                    <AccordionItem value="item-1">
+                      <AccordionTrigger>
+                        <CardTitle>Panturrilha</CardTitle>
+                      </AccordionTrigger>
+                      <AccordionContent>
+                        <CardDescription>
+                          {PANTURRILHA.map((s, index) => (
+                            <div key={index}>
+                              <Accordion
+                                type="single"
+                                collapsible
+                                className="w-full">
+                                <AccordionItem value="item-1">
+                                  <AccordionTrigger>
+                                    {s.treino}
+                                  </AccordionTrigger>
+                                  <AccordionContent>
+                                    {" "}
+                                    {s.carga}
+                                  </AccordionContent>
+                                </AccordionItem>
+                              </Accordion>
+                            </div>
+                          ))}
+                        </CardDescription>
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                </CardHeader>
+              </Card>
+            )}
 
-            <Card className="">
-              <CardHeader>
-                <Accordion type="single" collapsible className="w-full">
-                  <AccordionItem value="item-1">
-                    <AccordionTrigger>
-                      <CardTitle>Superior 2</CardTitle>
-                    </AccordionTrigger>
-                    <AccordionContent>
-                      <CardDescription>
-                        {_.takeRight(
-                          HistoricoExercicios.filter((o) =>
-                            o.grupo?.includes("MEMBROS SUPERIORES 2")
-                          ).map((s, index) => (
+            {PEITORAL.length > 0 && (
+              <Card className="">
+                <CardHeader>
+                  <Accordion type="single" collapsible className="w-full">
+                    <AccordionItem value="item-1">
+                      <AccordionTrigger>
+                        <CardTitle>Peitoral</CardTitle>
+                      </AccordionTrigger>
+                      <AccordionContent>
+                        <CardDescription>
+                          {PEITORAL.map((s, index) => (
                             <div key={index}>
                               <Accordion
                                 type="single"
@@ -739,29 +873,25 @@ export default function Treino() {
                                 </AccordionItem>
                               </Accordion>
                             </div>
-                          )),
-                          7
-                        )}
-                      </CardDescription>
-                    </AccordionContent>
-                  </AccordionItem>
-                </Accordion>
-              </CardHeader>
-            </Card>
-
-            <Card className="">
-              <CardHeader>
-                <Accordion type="single" collapsible className="w-full">
-                  <AccordionItem value="item-1">
-                    <AccordionTrigger>
-                      <CardTitle>Ombros</CardTitle>
-                    </AccordionTrigger>
-                    <AccordionContent>
-                      <CardDescription>
-                        {_.takeRight(
-                          HistoricoExercicios.filter((o) =>
-                            o.grupo?.includes("OMBROS")
-                          ).map((s, index) => (
+                          ))}
+                        </CardDescription>
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                </CardHeader>
+              </Card>
+            )}
+            {POSTERIORES_DE_COXAS.length > 0 && (
+              <Card className="">
+                <CardHeader>
+                  <Accordion type="single" collapsible className="w-full">
+                    <AccordionItem value="item-1">
+                      <AccordionTrigger>
+                        <CardTitle>Posteriores de Coxas</CardTitle>
+                      </AccordionTrigger>
+                      <AccordionContent>
+                        <CardDescription>
+                          {POSTERIORES_DE_COXAS.map((s, index) => (
                             <div key={index}>
                               <Accordion
                                 type="single"
@@ -778,29 +908,25 @@ export default function Treino() {
                                 </AccordionItem>
                               </Accordion>
                             </div>
-                          )),
-                          7
-                        )}
-                      </CardDescription>
-                    </AccordionContent>
-                  </AccordionItem>
-                </Accordion>
-              </CardHeader>
-            </Card>
-
-            <Card className="">
-              <CardHeader>
-                <Accordion type="single" collapsible className="w-full">
-                  <AccordionItem value="item-1">
-                    <AccordionTrigger>
-                      <CardTitle>Panturrilha</CardTitle>
-                    </AccordionTrigger>
-                    <AccordionContent>
-                      <CardDescription>
-                        {_.takeRight(
-                          HistoricoExercicios.filter((o) =>
-                            o.grupo?.includes("PANTURRILHA")
-                          ).map((s, index) => (
+                          ))}
+                        </CardDescription>
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                </CardHeader>
+              </Card>
+            )}
+            {QUADS.length > 0 && (
+              <Card className="">
+                <CardHeader>
+                  <Accordion type="single" collapsible className="w-full">
+                    <AccordionItem value="item-1">
+                      <AccordionTrigger>
+                        <CardTitle>Quadríceps</CardTitle>
+                      </AccordionTrigger>
+                      <AccordionContent>
+                        <CardDescription>
+                          {QUADS.map((s, index) => (
                             <div key={index}>
                               <Accordion
                                 type="single"
@@ -817,29 +943,25 @@ export default function Treino() {
                                 </AccordionItem>
                               </Accordion>
                             </div>
-                          )),
-                          7
-                        )}
-                      </CardDescription>
-                    </AccordionContent>
-                  </AccordionItem>
-                </Accordion>
-              </CardHeader>
-            </Card>
-
-            <Card className="">
-              <CardHeader>
-                <Accordion type="single" collapsible className="w-full">
-                  <AccordionItem value="item-1">
-                    <AccordionTrigger>
-                      <CardTitle>Peitoral</CardTitle>
-                    </AccordionTrigger>
-                    <AccordionContent>
-                      <CardDescription>
-                        {_.takeRight(
-                          HistoricoExercicios.filter((o) =>
-                            o.grupo?.includes("PEITORAL")
-                          ).map((s, index) => (
+                          ))}
+                        </CardDescription>
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                </CardHeader>
+              </Card>
+            )}
+            {TRICEPS.length > 0 && (
+              <Card className="">
+                <CardHeader>
+                  <Accordion type="single" collapsible className="w-full">
+                    <AccordionItem value="item-1">
+                      <AccordionTrigger>
+                        <CardTitle>Tríceps</CardTitle>
+                      </AccordionTrigger>
+                      <AccordionContent>
+                        <CardDescription>
+                          {TRICEPS.map((s, index) => (
                             <div key={index}>
                               <Accordion
                                 type="single"
@@ -856,132 +978,14 @@ export default function Treino() {
                                 </AccordionItem>
                               </Accordion>
                             </div>
-                          )),
-                          7
-                        )}
-                      </CardDescription>
-                    </AccordionContent>
-                  </AccordionItem>
-                </Accordion>
-              </CardHeader>
-            </Card>
-
-            <Card className="">
-              <CardHeader>
-                <Accordion type="single" collapsible className="w-full">
-                  <AccordionItem value="item-1">
-                    <AccordionTrigger>
-                      <CardTitle>Posteriores de Coxas</CardTitle>
-                    </AccordionTrigger>
-                    <AccordionContent>
-                      <CardDescription>
-                        {_.takeRight(
-                          HistoricoExercicios.filter((o) =>
-                            o.grupo?.includes("POSTERIORES DE COXAS")
-                          ).map((s, index) => (
-                            <div key={index}>
-                              <Accordion
-                                type="single"
-                                collapsible
-                                className="w-full">
-                                <AccordionItem value="item-1">
-                                  <AccordionTrigger>
-                                    {s.treino}
-                                  </AccordionTrigger>
-                                  <AccordionContent>
-                                    {" "}
-                                    {s.carga}
-                                  </AccordionContent>
-                                </AccordionItem>
-                              </Accordion>
-                            </div>
-                          )),
-                          7
-                        )}
-                      </CardDescription>
-                    </AccordionContent>
-                  </AccordionItem>
-                </Accordion>
-              </CardHeader>
-            </Card>
-
-            <Card className="">
-              <CardHeader>
-                <Accordion type="single" collapsible className="w-full">
-                  <AccordionItem value="item-1">
-                    <AccordionTrigger>
-                      <CardTitle>Quadríceps</CardTitle>
-                    </AccordionTrigger>
-                    <AccordionContent>
-                      <CardDescription>
-                        {_.takeRight(
-                          HistoricoExercicios.filter((o) =>
-                            o.grupo?.includes("QUADS")
-                          ).map((s, index) => (
-                            <div key={index}>
-                              <Accordion
-                                type="single"
-                                collapsible
-                                className="w-full">
-                                <AccordionItem value="item-1">
-                                  <AccordionTrigger>
-                                    {s.treino}
-                                  </AccordionTrigger>
-                                  <AccordionContent>
-                                    {" "}
-                                    {s.carga}
-                                  </AccordionContent>
-                                </AccordionItem>
-                              </Accordion>
-                            </div>
-                          )),
-                          7
-                        )}
-                      </CardDescription>
-                    </AccordionContent>
-                  </AccordionItem>
-                </Accordion>
-              </CardHeader>
-            </Card>
-
-            <Card className="">
-              <CardHeader>
-                <Accordion type="single" collapsible className="w-full">
-                  <AccordionItem value="item-1">
-                    <AccordionTrigger>
-                      <CardTitle>Tríceps</CardTitle>
-                    </AccordionTrigger>
-                    <AccordionContent>
-                      <CardDescription>
-                        {_.takeRight(
-                          HistoricoExercicios.filter((o) =>
-                            o.grupo?.includes("TRICEPS")
-                          ).map((s, index) => (
-                            <div key={index}>
-                              <Accordion
-                                type="single"
-                                collapsible
-                                className="w-full">
-                                <AccordionItem value="item-1">
-                                  <AccordionTrigger>
-                                    {s.treino}
-                                  </AccordionTrigger>
-                                  <AccordionContent>
-                                    {" "}
-                                    {s.carga}
-                                  </AccordionContent>
-                                </AccordionItem>
-                              </Accordion>
-                            </div>
-                          )),
-                          7
-                        )}
-                      </CardDescription>
-                    </AccordionContent>
-                  </AccordionItem>
-                </Accordion>
-              </CardHeader>
-            </Card>
+                          ))}
+                        </CardDescription>
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                </CardHeader>
+              </Card>
+            )}
           </div>
 
           {/* {ultimosTreinos.length > 0 && (
